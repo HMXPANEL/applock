@@ -302,7 +302,12 @@ class FloatingBubbleService : Service() {
             maxLines = MAX_SUBTITLE_LINES
             ellipsize = TextUtils.TruncateAt.END
             setShadowLayer(4f, 0f, 2f, 0x80000000.toInt())
-            lineHeight = dpToPx(22)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                lineHeight = dpToPx(22)
+            } else {
+                @Suppress("DEPRECATION")
+                setLineSpacing(dpToPx(22).toFloat(), 1f)
+            }
         }
         subtitleContainer.addView(subtitleText)
 
