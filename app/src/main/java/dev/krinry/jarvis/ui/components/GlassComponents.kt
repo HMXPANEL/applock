@@ -83,11 +83,10 @@ fun GlassCard(
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(cornerRadius))
+            .background(GlassWhite, RoundedCornerShape(cornerRadius))
             .hazeChild(
                 state = hazeState,
-                style = HazeMaterials.ultraThin(
-                    tint = GlassWhite
-                )
+                style = HazeMaterials.ultraThin()
             )
             .border(
                 width = 1.dp,
