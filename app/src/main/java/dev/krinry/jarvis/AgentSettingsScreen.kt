@@ -607,14 +607,13 @@ private fun GlassDivider() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ModelPickerDialog(context: Context, target: String, onSelect: (String) -> Unit, onDismiss: () -> Unit) {
-    val scope = rememberCoroutineScope()
     var models by remember { mutableStateOf<List<ModelInfo>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
     var searchQuery by remember { mutableStateOf("") }
     var showFreeOnly by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        scope.launch { isLoading = true; models = GroqApiClient.fetchAvailableModels(context); isLoading = false }
+        isLoading = true; models = GroqApiClient.fetchAvailableModels(context); isLoading = false
     }
 
     val filteredModels = models.filter { model ->

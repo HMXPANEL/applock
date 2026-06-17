@@ -9,6 +9,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import kotlinx.coroutines.delay
 
 /**
  * AutoAgentService — AccessibilityService for full device control.
@@ -143,19 +144,19 @@ class AutoAgentService : AccessibilityService() {
      * Set text on an editable node.
      * First focuses the node, then sets text.
      */
-    fun setTextOnNode(node: AccessibilityNodeInfo, text: String): Boolean {
+    suspend fun setTextOnNode(node: AccessibilityNodeInfo, text: String): Boolean {
         return try {
             // Focus the node first
             node.performAction(AccessibilityNodeInfo.ACTION_FOCUS)
             node.performAction(AccessibilityNodeInfo.ACTION_CLICK)
-            Thread.sleep(150)
+            delay(150)
 
             // Clear existing text
             val clearArgs = android.os.Bundle().apply {
                 putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "")
             }
             node.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, clearArgs)
-            Thread.sleep(100)
+            delay(100)
 
             // Set new text
             val args = android.os.Bundle().apply {

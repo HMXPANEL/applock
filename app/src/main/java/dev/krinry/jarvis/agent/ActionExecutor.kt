@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.util.Log
 import dev.krinry.jarvis.service.AutoAgentService
+import kotlinx.coroutines.delay
 import org.json.JSONObject
 
 /**
@@ -98,7 +99,7 @@ object ActionExecutor {
     /**
      * Execute an action. Returns Hindi status string.
      */
-    fun execute(action: AgentAction, nodes: List<UiTreeExtractor.UiNode>): String {
+    suspend fun execute(action: AgentAction, nodes: List<UiTreeExtractor.UiNode>): String {
         val service = AutoAgentService.instance
             ?: return "❌ Accessibility service nahi chal rahi"
 
@@ -181,7 +182,7 @@ object ActionExecutor {
     // =========================================================================
     // Type — Click field first, then set text
     // =========================================================================
-    private fun executeType(
+    private suspend fun executeType(
         action: AgentAction,
         nodes: List<UiTreeExtractor.UiNode>,
         service: AutoAgentService
@@ -205,7 +206,7 @@ object ActionExecutor {
 
         // Click to focus
         service.clickNode(uiNode.nodeInfo)
-        Thread.sleep(300)
+        delay(300)
 
         val success = service.setTextOnNode(uiNode.nodeInfo, text)
         return if (success) "✅ Type kiya: '$text'" else "❌ Type nahi ho paya"
@@ -413,7 +414,7 @@ object ActionExecutor {
         return "❌ Koi text field focused nahi hai"
     }
 
-    private fun executePaste(action: AgentAction, nodes: List<UiTreeExtractor.UiNode>, service: AutoAgentService): String {
+    private suspend fun executePaste(action: AgentAction, nodes: List<UiTreeExtractor.UiNode>, service: AutoAgentService): String {
         // If node_id given, focus that first
         val nodeId = action.nodeId
         if (nodeId != null) {
@@ -422,7 +423,7 @@ object ActionExecutor {
             if (node != null) {
                 node.nodeInfo.performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_FOCUS)
                 node.nodeInfo.performAction(android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK)
-                Thread.sleep(200)
+                delay(200)
             }
         }
 
