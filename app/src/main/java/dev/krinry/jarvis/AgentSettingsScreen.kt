@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -43,7 +42,6 @@ import dev.chrisbanes.haze.haze
 import dev.krinry.jarvis.ai.GroqApiClient
 import dev.krinry.jarvis.ai.ModelInfo
 import dev.krinry.jarvis.security.SecureKeyStore
-import dev.krinry.jarvis.service.AutoAgentService
 import dev.krinry.jarvis.service.FloatingBubbleService
 import dev.krinry.jarvis.ui.components.AnimatedBackgroundOrbs
 import dev.krinry.jarvis.ui.components.GlassCard
