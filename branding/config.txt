@@ -1,0 +1,38 @@
+# =====================================================
+# Jarvis Branding Configuration
+# =====================================================
+# Edit these values and run "Brand Build" workflow
+# The APK will be built with your custom branding!
+# =====================================================
+
+# App display name (shown on phone home screen)
+APP_NAME=Aura
+
+# Application package name (unique identifier)
+PACKAGE_NAME=com.aura.assistant
+
+# Version shown to users (e.g., 1.0, 2.0-beta, 1.5.0)
+VERSION_NAME=1.0
+
+# Internal version code (must be integer, increase each release)
+VERSION_CODE=1
+
+# Minimum Android SDK level (24 = Android 7.0 Nougat)
+MIN_SDK=24
+
+# Target Android SDK level (35 = Android 15)
+TARGET_SDK=35
+
+# Accessibility service label (shown in settings)
+ACCESSIBILITY_LABEL=Aura AutoAgent
+
+# Accessibility service description
+ACCESSIBILITY_DESC=Enable Aura to automatically perform actions and navigate apps on your behalf.
+
+# =====================================================
+# Logo Instructions
+# =====================================================
+# Place your logo.png in this same folder (branding/)
+# Recommended: 512x512 PNG with transparent background
+# The workflow will automatically use it for the app icon
+# =====================================================

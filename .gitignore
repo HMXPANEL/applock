@@ -1,0 +1,36 @@
+# IDE files
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+
+# Build outputs
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# Local config
+local.properties
+/transfer
+*.jks
+keystore.properties
+
+# Documentation
+docs/
+*.md.resolved
+
+# Branding (keep logo.png and config.txt, ignore rest)
+branding/*.jpg
+branding/*.jpeg
+branding/*.svg
+branding/*.psd
+
+# Trashed files (from IDE/file manager)
+.trashed-*
