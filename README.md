@@ -1,3 +1,0 @@
-# applock
-
-Synced by GitSyncvhjb
